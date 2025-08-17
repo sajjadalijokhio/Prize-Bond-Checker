@@ -64,11 +64,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
 <script>
+// Normalize bond number: remove all non-digits, keep original length
 function normalizeBondNumber(val) {
   if (!val) return null;
   let digits = String(val).replace(/\D/g, ""); // remove non-digits
   if (!digits) return null;
-  return digits.padStart(6, "0"); // keep leading zeros
+  return digits; // keep variable length (6,7,8 digits etc.)
 }
 
 function readExcel(file, callback) {
